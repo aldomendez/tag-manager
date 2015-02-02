@@ -31,10 +31,12 @@
     <!--STYLES-->
     <link rel="stylesheet" href="/styles/importer.css">
     <!--STYLES END-->
+    <link rel="stylesheet" href="/lib/semantic-ui/1.8.1/semantic.css">
   </head>
 
   <body>
-    <%- body %>
+    <div id="container" class="ui page grid vertically padded"></div>
+    <script type="ractive/template" id="template"><%- body %></script>
 
 
 
@@ -89,8 +91,10 @@
 
     <!--SCRIPTS-->
     <script src="/js/dependencies/sails.io.js"></script>
+    <script src="/js/dependencies/async.js"></script>
+    <script src="/js/dependencies/mousetrap.min.js"></script>
+    <script src="/js/dependencies/ractive.js"></script>
     <script src="/js/app.js"></script>
-    <script src="/js/socket.js"></script>
     <!--SCRIPTS END-->
   </body>
 </html>
