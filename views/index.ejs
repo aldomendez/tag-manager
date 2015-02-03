@@ -6,46 +6,57 @@
          Issues: <span>
             <a href="#" class="section">area</a>
             <span class="divider">/</span>
-            <a href="#" class="section">linea</a>
+            <a href="/incidentes/create/?area=osas&description=problemas+Con+curado+canal+4&shift=4&responsible=Aldo+Mendez" class="section">linea</a>
           </span>
       </div>
     </div>
   </div>
 </div>
 <div class="row">
+{{#unless editing}}
   <div class="wide column ">
-    <div class="ui relaxed celled selection list">
+    <h3 class="ui top attached header">Incidentes</h3>
+    <div class="ui relaxed celled list attached segment">
       
       {{#if destroyed}}
-        <a class="item" href="#!show/incidente/{{id}}">
+        <div class="item" href="#!show/incidentes/{{id}}">
           <i class="red circle help icon"></i>
           <div class="content">
             <div class="header">{{destroyed.previous.description}}</div>
             <div class="description">Incident Closed:  #{{destroyed.previous.id}} abierto {{destroyed.previous.createdAt}} por {{destroyed.previous.responsible}}</div>
           </div>
-        </a>
+        </div>
       {{/if destroyed}}
 
       {{#each incident}}
-      <a class="item" href="#!show/incidente/{{id}}">
+      <div class="item">
         <i class=" help icon"></i>
         <div class="content">
-          <div class="header">{{description}}</div>
+          <div class="header"><a href="/incidentes/destroy/{{id}}">{{description}}</a></div>
           <div class="description">#{{id}} abierto {{createdAt}} por {{responsible}}</div>
         </div>
-      </a>
+      </div>
       {{/each}}
     </div>
   </div>
-  <!-- <div class="five wide column ui segment"></div> -->
+{{/unless}}
+{{#if editing}}
+  <div class="wide column">
+    {{#with newComment}}
+    <div class="ui small form segment">
+      <div class="field required "><label for="">Titulo {{title}}</label><input type="text" value="{{title}}"></div>
+      <div class="two fields ">
+        <div class="field">
+          <label for="">Comentario</label><textarea name="" id="" cols="30" rows="10" value="{{comment}}"></textarea>
+        </div>
+        <div class="field"><label for="">Resultado</label>
+          {{{marked(comment)}}}
+        </div>
+      </div>
+      <div class="ui submit button">Enviar nuevo incidente</div>
+    </div>
+    {{/with}}
+  </div>
+{{/if}}
+
 </div>
-<!-- 
-area: "osas"
-clasification: "wip"
-createdAt: "2015-01-28T03:06:58.903Z"
-description: "No tenemos osas gen3"
-id: 1
-responsible: "unspecified"
-shift: "2"
-updatedAt: "2015-01-28T03:06:58.903Z"
- -->
