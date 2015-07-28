@@ -1,21 +1,44 @@
 <head>
-  <title>Todo List</title>
+  <title>Impresora de etiquetas</title>
+  <link rel="stylesheet" href="semantic/semantic.css">
 </head>
  
 <body>
-  <div class="container">
+  <div class="ui container">
     <header>
-      <h1>Todo List</h1>
+      <h1>Lista de etiquetas</h1>
     </header>
- 
     <ul>
-      {{#each tasks}}
-        {{> task}}
+      {{#each tags}}
+        {{> tag}}
       {{/each}}
     </ul>
+    {{>newTagForm}}
   </div>
 </body>
- 
-<template name="task">
-  <li>{{code}}-{{subcode}} {{carrier}}</li>
+
+<template name="tag">
+  <li><a href="#/etiqueta/{{carrier}}">{{code}}-{{subcode}} {{carrier}}</a></li>
+</template>
+
+<template name="newTagForm">
+  <form action="" class="ui form">
+    <div class="field">
+      <label for="">Numero de carrier</label>
+      <input type="text" name="first-name" id="first-name">
+    </div>
+    <div class="field">
+      <label for="">Seleccione el codigo</label>
+      <select name="" id="" class="ui dropdown">
+        <option value="">Select a code</option>
+        {{#each codes}}
+          {{>code}}
+        {{/each}}
+      </select>
+    </div>
+  </form>
+</template>
+
+<template name="code">
+  <option value="{{code}}">{{code}}</option>
 </template>
